@@ -1,56 +1,61 @@
 <div class="container">
   <div class="row">
-    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-      <h1>Ingresar producto</h1>
-      <form class="form-group">
-        <div class="form-group">
-          <label for="nombre">Nombre del producto</label>
-          <input type="text" class="form-control" name="nombre" id="nombre" [(ngModel)]="cuadroNombre">
-        </div>
-        <div class="form-group">
-          <label for="precio">Precio del producto</label>
-          <input type="number" class="form-control" name="precio" id="precio" [(ngModel)]="cuadroPrecio">
-        </div>
-        <div class="form-group">
-          <label for="cantidad">Cantidad de productos</label>
-          <input type="number" class="form-control" name="cantidad" id="cantidad" [(ngModel)]="cuadroCantidad">
-        </div>
-        <div class="form-group">
-          <label for="descripcion">Descripción del producto</label>
-          <input type="text" class="form-control" name="descripcion" id="descripcion" [(ngModel)]="cuadroDescripcion">
-        </div>
-        <br><br>
-        <button class="btn btn-primary" type="submit" (click)="agregarProducto()">Crear</button>
-      </form>
-    </div>
-    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-      <h1>Mostrar producto</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>nombre</th>
-            <th>precio</th>
-            <th>cantidad</th>
-            <th>descripción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let producto of productos; let i=index">
-            <td scope="row">{{i+1}}</td>
-            <td>{{producto.nombre}}</td>
-            <td>{{producto.precio}}</td>
-            <td>{{producto.cantidad}}</td>
-            <td>{{producto.descripcion}}</td>
-          </tr>
-        </tbody>
-      </table>
-    <!--  <ol>
-        <li *ngFor="let producto of productos; let i=index">
-          {{i+1}} {{producto.nombre}} {{producto.precio}} {{producto.cantidad}} {{producto.descripcion}}
-        </li>
-      </ol>
-    -->
+    <div class="col">
+      <button (click)="clickMostrarProductos()" type="submit" class="btn btn-primary">Productos</button>
+      <button type="button" class="btn btn-primary">Empleados</button>
     </div>
   </div>
 </div>
+<div class="productos" ng-show="verProductos">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <h1>{{tituloFormulario}}</h1>
+        <form class="form-group">
+          <div class="form-group">
+            <label for="nombre">Nombre del producto</label>
+            <input type="text" class="form-control" name="nombre" id="nombre" [(ngModel)]="cuadroNombre">
+          </div>
+          <div class="form-group">
+            <label for="precio">Precio del producto</label>
+            <input type="number" class="form-control" name="precio" id="precio" [(ngModel)]="cuadroPrecio">
+          </div>
+          <div class="form-group">
+            <label for="cantidad">Cantidad de productos</label>
+            <input type="number" class="form-control" name="cantidad" id="cantidad" [(ngModel)]="cuadroCantidad">
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción del producto</label>
+            <input type="text" class="form-control" name="descripcion" id="descripcion" [(ngModel)]="cuadroDescripcion">
+          </div>
+          <button class="btn btn-primary" type="submit" (click)="agregarProducto()">Crear</button>
+        </form>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <h1>{{tituloTabla}}</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>nombre</th>
+              <th>precio</th>
+              <th>cantidad</th>
+              <th>descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of productos; let i=index">
+              <td scope="row">{{i+1}}</td>
+              <td>{{producto.nombre}}</td>
+              <td>{{producto.precio}}</td>
+              <td>{{producto.cantidad}}</td>
+              <td>{{producto.descripcion}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-empleados></app-empleados>
